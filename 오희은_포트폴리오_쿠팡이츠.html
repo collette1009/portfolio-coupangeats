@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오희은 | 배달 협력사 운영 관리 · 쿠팡이츠서비스 지원</title>
+  <meta name="description" content="B2B 물류 협력사 정책 협상·개편, 성과 지표 구조화, 운영 체계 설계 경험을 보유한 운영 관리형 담당자입니다.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #FFFFFF; --bg-soft: #F7F7F8; --bg-card: #F3F3F4;
+      --border: #E5E5E6; --border-hover: #282D32;
+      --text-1: #141416; --text-2: #50505A; --text-3: #909098;
+      --charcoal: #282D32; --charcoal-2: #1A1E21; --charcoal-a: rgba(40,45,50,0.07);
+      --sh-sm: 0 1px 4px rgba(0,0,0,0.06); --sh-md: 0 4px 20px rgba(0,0,0,0.09); --sh-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --r: 10px; --r-sm: 6px; --ease: cubic-bezier(.4,0,.2,1); --t: 0.22s;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+    .hr { width: 100%; height: 1px; background: var(--border); }
+
+    header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
+    header.on { border-bottom-color: var(--border); }
+    .h-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 16px; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    nav { display: flex; gap: 30px; }
+    nav a { font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color var(--t); }
+    nav a:hover { color: var(--charcoal); }
+    .nav-toggle { display: none; width: 36px; height: 36px; border: none; background: none; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: transform var(--t) var(--ease), opacity var(--t); }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (max-width: 800px) {
+      .nav-toggle { display: flex; }
+      nav { display: none; position: absolute; top: 62px; left: 0; right: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); flex-direction: column; gap: 0; border-bottom: 1px solid var(--border); padding: 8px 0; }
+      nav.open { display: flex; }
+      nav a { padding: 14px 28px; font-size: 15px; }
+      nav a:hover { background: var(--bg-soft); }
+    }
+
+    .hero { padding: 96px 0 80px; position: relative; overflow: hidden; background-image: radial-gradient(circle, rgba(26,31,46,0.10) 1.5px, transparent 1px); background-size: 28px 28px; background-position: 14px 14px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 24px; }
+    .hero-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--charcoal); }
+    .hero-name { font-size: clamp(52px, 7vw, 80px); font-weight: 800; letter-spacing: -0.04em; color: var(--charcoal); line-height: 1.0; margin-bottom: 10px; }
+    .hero-role { font-size: clamp(17px, 2.2vw, 20px); font-weight: 500; color: var(--text-2); letter-spacing: -0.01em; margin-bottom: 36px; }
+    .hero-tagline { position: relative; padding: 0 0 0 22px; margin-bottom: 48px; max-width: 660px; }
+    .hero-tagline::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; border-radius: 2px; background: var(--charcoal); }
+    .hero-tagline p { font-size: clamp(15px, 1.8vw, 17px); color: var(--text-1); line-height: 1.85; }
+    .hero-tagline strong { font-weight: 600; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; font-size: 14px; font-weight: 600; border-radius: var(--r-sm); text-decoration: none; letter-spacing: -0.01em; transition: all var(--t) var(--ease); }
+    .btn svg { flex-shrink: 0; }
+    .btn-dark { background: var(--charcoal); color: var(--white); border: 1.5px solid var(--charcoal); }
+    .btn-dark:hover { background: var(--charcoal-2); border-color: var(--charcoal-2); transform: translateY(-1px); box-shadow: var(--sh-md); }
+    .btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--charcoal); background: var(--bg-card); transform: translateY(-1px); }
+
+    .sec { padding: 76px 0; }
+    .sec-alt { background: var(--bg-soft); }
+    .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+    .sec-title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; color: var(--charcoal); line-height: 1.3; margin-bottom: 40px; }
+
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+    .about-text { font-size: 16px; color: var(--text-2); line-height: 1.9; }
+    .about-text strong { color: var(--text-1); font-weight: 600; }
+    .about-text p + p { margin-top: 18px; }
+    .about-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .chip { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; background: var(--charcoal-a); color: var(--charcoal); letter-spacing: 0.01em; }
+    .about-sidebar { display: flex; flex-direction: column; gap: 14px; }
+    .sidebar-card { padding: 20px 22px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); }
+    .sidebar-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .sidebar-icon { width: 30px; height: 30px; border-radius: var(--r-sm); background: var(--charcoal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .sidebar-card-label { font-size: 13px; font-weight: 700; color: var(--text-1); }
+    .sidebar-card-desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .m-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); padding: 28px 18px; text-align: center; transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease), border-color var(--t); }
+    .m-card:hover { box-shadow: var(--sh-md); transform: translateY(-3px); border-color: var(--charcoal); }
+    .m-number { display: inline-block; font-size: 28px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; background: var(--charcoal-a); padding: 4px 14px; border-radius: 8px; }
+    .m-label { font-size: 13px; font-weight: 600; color: var(--text-1); margin-bottom: 6px; }
+    .m-sub { font-size: 11px; color: var(--text-3); line-height: 1.5; }
+
+    .cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .c-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); padding: 30px; display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: inherit; transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease), border-color var(--t); cursor: pointer; }
+    .c-card:hover { box-shadow: var(--sh-md); transform: translateY(-3px); border-color: var(--charcoal); }
+    .c-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+    .c-tag { font-size: 11px; font-weight: 600; color: var(--charcoal); background: var(--charcoal-a); padding: 4px 10px; border-radius: 100px; }
+    .c-title { font-size: 17px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; line-height: 1.45; }
+    .c-desc { font-size: 14px; color: var(--text-2); line-height: 1.75; flex: 1; }
+    .c-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); margin-top: auto; }
+    .c-metric { display: flex; flex-direction: column; gap: 2px; }
+    .c-metric-val { display: inline-block; font-size: 18px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.02em; background: var(--charcoal-a); padding: 2px 10px; border-radius: 6px; }
+    .c-metric-lab { font-size: 11px; color: var(--text-3); }
+    .c-arrow { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--charcoal); flex-shrink: 0; transition: background var(--t), border-color var(--t), transform var(--t); }
+    .c-card:hover .c-arrow { background: var(--charcoal); border-color: var(--charcoal); color: var(--white); transform: translateX(3px); }
+
+    .c-card-sub { background: var(--bg-soft); border: 1.5px solid var(--border); border-radius: var(--r); padding: 26px 30px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit; transition: box-shadow var(--t) var(--ease), border-color var(--t); cursor: pointer; }
+    .c-card-sub:hover { box-shadow: var(--sh-md); border-color: var(--charcoal); }
+    .c-sub-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+    .c-card-sub .c-title { font-size: 16px; }
+    .c-card-sub .c-bottom { padding-top: 12px; }
+
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 500; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--white); border-radius: 16px; max-width: 700px; width: 100%; max-height: 88vh; overflow-y: auto; box-shadow: var(--sh-lg); animation: modalIn 0.25s var(--ease); }
+    @keyframes modalIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: none; } }
+    .modal-head { padding: 32px 36px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .modal-close { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--border); background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background var(--t), border-color var(--t); }
+    .modal-close:hover { background: var(--bg-card); border-color: var(--charcoal); }
+    .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .modal-title { font-size: 20px; font-weight: 700; color: var(--text-1); letter-spacing: -0.02em; line-height: 1.4; }
+    .modal-body { padding: 28px 36px 36px; display: flex; flex-direction: column; gap: 24px; }
+    .modal-section { display: flex; flex-direction: column; gap: 8px; }
+    .modal-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+    .modal-section-text { font-size: 15px; color: var(--text-2); line-height: 1.8; }
+    .modal-section-text strong { color: var(--text-1); font-weight: 600; }
+    .modal-result { background: var(--charcoal); border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; gap: 20px; }
+    .modal-result-num { font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; white-space: nowrap; }
+    .modal-result-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    @media (max-width: 600px) { .modal-head { padding: 24px 20px 20px; } .modal-body { padding: 20px 20px 28px; } .modal-title { font-size: 17px; } }
+
+
+    .jd-grid { display: flex; flex-direction: column; gap: 16px; }
+    .jd-item { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease); }
+    .jd-item:hover { border-color: var(--border-hover); box-shadow: var(--sh-md); }
+    .jd-left { background: var(--charcoal); color: var(--white); padding: 28px 32px; display: flex; flex-direction: column; gap: 10px; }
+    .jd-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .jd-req { font-size: 15px; font-weight: 600; line-height: 1.55; color: var(--white); }
+    .jd-keyword-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .jd-kw { font-size: 11px; font-weight: 600; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75); padding: 3px 9px; border-radius: 20px; }
+    .jd-right { background: var(--white); padding: 28px 32px; display: flex; flex-direction: column; gap: 10px; }
+    .jd-match-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+    .jd-match-title { font-size: 14px; font-weight: 700; color: var(--text-1); line-height: 1.5; }
+    .jd-match-points { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .jd-match-point { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-2); line-height: 1.6; }
+    .jd-match-point::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--charcoal); flex-shrink: 0; margin-top: 8px; }
+    @media (max-width: 680px) { .jd-item { grid-template-columns: 1fr; } }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .sk-group { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); padding: 22px 24px; }
+    .sk-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .sk-list { display: flex; flex-direction: column; gap: 9px; }
+    .sk-item { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--text-2); }
+    .sk-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--charcoal); flex-shrink: 0; }
+
+    footer { padding: 60px 0; border-top: 1px solid var(--border); }
+    .footer-grid { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .footer-name { font-size: 22px; font-weight: 800; color: var(--charcoal); letter-spacing: -0.03em; margin-bottom: 4px; }
+    .footer-sub { font-size: 14px; color: var(--text-3); }
+
+    .fi { opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+    .fi.show { opacity: 1; transform: none; }
+    .fi:nth-child(2) { transition-delay: 0.08s; }
+    .fi:nth-child(3) { transition-delay: 0.16s; }
+    .fi:nth-child(4) { transition-delay: 0.24s; }
+
+    @media (max-width: 800px) {
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .metrics-grid { grid-template-columns: repeat(2,1fr); }
+      .cases-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 500px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; }
+      .btn { justify-content: center; }
+      .sec { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="hd">
+  <div class="h-inner">
+    <a href="#" class="logo">오희은</a>
+    <nav id="nav">
+      <a href="#about">소개</a>
+      <a href="#cases">케이스 스터디</a>
+      <a href="#jd">요건 매칭</a>
+      <a href="#contact">연락하기</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      B2B 협력사 운영 관리 · 정책 협상 · 성과 지표 분석 · 운영 체계 설계
+    </div>
+    <h1 class="hero-name">오희은</h1>
+    <p class="hero-role">쿠팡이츠서비스 · 배달 협력사 운영 관리 담당자 지원</p>
+    <div class="hero-tagline">
+      <p>
+        협력사 문제가 반복될 때, 저는 관행보다 <strong>기준과 데이터를 먼저 확인합니다.</strong><br><br>
+        택배 표준약관을 근거로 사고 접수·증빙·보상 프로세스를 재정렬해 월 배상 회수액을 14배 개선했고, 3PL 전환 이후 파손·누락·지연 이슈를 지표화해 월별 협의 기준으로 구조화했습니다. 기준이 없던 운영 환경에서는 <strong>SOP와 온보딩 기준을 정비해 운영 연속성을 유지했습니다.</strong>
+      </p>
+    </div>
+    <div class="hero-cta">
+      <a href="#cases" class="btn btn-dark">
+        케이스 스터디 보기
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#jd" class="btn btn-outline">
+        요건 매칭 확인하기
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <p class="sec-eyebrow">About</p>
+    <h2 class="sec-title">협력사가 명확한 기준 아래 운영될 수 있도록<br>정책을 설계하고 데이터로 성과를 관리합니다</h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-text fi">
+          <p>
+            협력사가 "그냥 이렇게 해왔어요"라고 할 때, 저는 계약서와 약관을 먼저 펼칩니다. 택배사가 "회수 없으면 보상 불가"라는 입장을 고수했을 때, 감정적 클레임 대신 <strong>택배 표준약관 제9조·제18조를 근거로 협상 논리</strong>를 구성했습니다. 약관 기준을 재확인한 뒤, 담당자가 먼저 "실물 회수 생략·사진 대체"의 간소화 프로세스를 제안해왔고, 월 배상 회수액이 14배 개선됐습니다.
+          </p>
+          <p>
+            3PL 전환 이후 피해 비용이 누적되고 있을 때는 계약서 기준으로 피해 유형을 분류하고, <strong>월별 집계 파일과 정산 기준을 직접 설계</strong>했습니다. 수집 가능한 데이터부터 우선 구조화하고, CEO에 보고해 물류비 차감 방향으로 정산 체계를 확정했습니다.
+          </p>
+          <p>
+            법인회생으로 조직이 흔들렸을 때는 CS 경험이 전혀 없는 타 부서 인력이 즉시 실무 투입 가능하도록 <strong>응대 기준·판단 로직·예외 처리 SOP를 처음부터 직접 설계</strong>했습니다. 지원 인력이 순차 투입되는 상황에서도 동일 기준으로 응대가 가능하도록 처리 기준과 검수 흐름을 정비해 운영 연속성을 유지했습니다.
+          </p>
+          <p>
+            카카오골프예약에서는 400여 개 제휴 골프장의 정책을 수집·분류해 상담 혼선을 구조적으로 차단하는 <strong>파트너 정책 관리 체계</strong>를 구축했습니다. 복잡한 파트너별 정책을 표준 판단 기준으로 통일하는 것이 협력사 운영의 핵심임을 그 경험에서 배웠습니다.
+          </p>
+        </div>
+        <div class="about-chips fi">
+          <span class="chip">B2B 협력사 정책 협상</span>
+          <span class="chip">약관·계약서 기반 귀책 기준 정의</span>
+          <span class="chip">성과 지표 구조화 및 리포팅</span>
+          <span class="chip">운영 SOP · 가이드라인 설계</span>
+          <span class="chip">온보딩 체계 구축</span>
+          <span class="chip">데이터 기반 운영 문제 정의</span>
+        </div>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-card fi">
+          <div class="sidebar-card-top">
+            <div class="sidebar-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 4h8M3 7h6M3 10h4" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <span class="sidebar-card-label">협력사는 기준과 데이터로 움직입니다</span>
+          </div>
+          <p class="sidebar-card-desc">감정적 클레임보다 계약·약관·운영 데이터를 근거로 협의할 때, 파트너와 같은 기준으로 문제를 해결할 수 있었습니다.</p>
+        </div>
+        <div class="sidebar-card fi">
+          <div class="sidebar-card-top">
+            <div class="sidebar-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="8" rx="1.5" stroke="white" stroke-width="1.4"/><path d="M5 6.5h4M5 8.5h2.5" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <span class="sidebar-card-label">기준이 없는 상황이 기회다</span>
+          </div>
+          <p class="sidebar-card-desc">기준이 없으면 혼선이 반복됩니다. 운영 SOP와 판단 기준을 처음부터 설계하는 것은 어렵지만, 그 기준이 정착되면 조직 전체가 흔들리지 않습니다.</p>
+        </div>
+        <div class="sidebar-card fi">
+          <div class="sidebar-card-top">
+            <div class="sidebar-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 11L5 7l2.5 2.5L10 5l2 3" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="sidebar-card-label">데이터로 말해야 움직인다</span>
+          </div>
+          <p class="sidebar-card-desc">VOC 173건을 전수 분류해 원인을 규명하고, 3PL 피해 현황을 집계해 정산 구조로 연결했습니다. 데이터가 있어야 협력사도, 내부도 움직입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- METRICS -->
+<section class="sec" id="metrics">
+  <div class="wrap">
+    <p class="sec-eyebrow">Key Results</p>
+    <h2 class="sec-title">협력사 운영 구조를 바꾼 수치들</h2>
+    <div class="metrics-grid">
+      <div class="m-card fi">
+        <div class="m-number">14배</div>
+        <div class="m-label">협력사 배상 회수 개선</div>
+        <div class="m-sub">월 50만원 수준 → 744만원 수준<br>택배사 사고·보상 프로세스 협의·개편</div>
+      </div>
+      <div class="m-card fi">
+        <div class="m-number">정책 전면 개편</div>
+        <div class="m-label">파손 보상 프로세스 간소화</div>
+        <div class="m-sub">실물 회수 → 사진 대체 합의<br>양사 업무 리드타임 대폭 단축</div>
+      </div>
+      <div class="m-card fi">
+        <div class="m-number">운영 연속성 유지</div>
+        <div class="m-label">SOP · 온보딩 체계 구축</div>
+        <div class="m-sub">기준 부재 상황에서 SOP·판단 기준 설계<br>미경험 인력 순차 투입 후 동일 기준 응대</div>
+      </div>
+      <div class="m-card fi">
+        <div class="m-number">96%</div>
+        <div class="m-label">VOC 반복 인입 감소</div>
+        <div class="m-sub">173건 전수 분류 · 원인 데이터 규명<br>월 106건 → 4건 · 운영 정책 수립</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- CASES -->
+<section class="sec sec-alt" id="cases">
+  <div class="wrap">
+    <p class="sec-eyebrow">Case Studies</p>
+    <h2 class="sec-title">협력사와 운영 구조를 바꾼 사례들</h2>
+    <div class="cases-grid">
+
+      <div class="c-card" onclick="openModal('m1')">
+        <div class="c-tags">
+          <span class="c-tag">B2B 협력사 협상</span>
+          <span class="c-tag">정책 개편</span>
+          <span class="c-tag">약관 기반 협상</span>
+        </div>
+        <div class="c-title">택배사 사고·보상 프로세스 개선 · 회수/사진 증빙 기준 재정렬로 배상 회수액 14배 개선</div>
+        <div class="c-desc">택배 표준약관과 실제 사고 처리 흐름을 근거로 회수·사진 증빙·사고 접수 기준을 재정리했습니다. 실물 회수와 송장·겉박스·내품 사진 3종 제출이 일괄 요구되던 구조를, 사고 등록 여부와 필요 증빙 기준에 따라 최소 확인하는 방식으로 전환해 고객의 추가 증빙 부담과 협력사 처리 리드타임을 줄였습니다.</div>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">14배</span>
+            <span class="c-metric-lab">월 배상 회수액 개선</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-card" onclick="openModal('m2')">
+        <div class="c-tags">
+          <span class="c-tag">성과 지표 구조화</span>
+          <span class="c-tag">데이터 분석</span>
+          <span class="c-tag">정산 기준 수립</span>
+        </div>
+        <div class="c-title">3PL 전환 후 협력사 피해 현황 집계 · 성과 지표 구조화 및 정산 체계 수립</div>
+        <div class="c-desc">3PL 전환 이후 미정산 피해 비용이 누적되던 상황에서, 계약서 기준으로 피해를 분류하고 월별 집계 파일·통보서 구조를 직접 설계해 CEO에 보고, 정산 기준을 확정했습니다.</div>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">정산 구조 수립</span>
+            <span class="c-metric-lab">계약서 기반 피해 유형 분류</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-card-sub" onclick="openModal('m3')">
+        <div class="c-sub-badge">Supporting Case</div>
+        <div class="c-title">운영 체계 구축 · 미경험 인력 온보딩 설계 및 서비스 공백 없는 운영 유지</div>
+        <div class="c-desc">기준이 전무한 상황에서 SOP·판단 로직·예외 처리 기준을 처음부터 설계, CS 경험 없는 인력을 서비스 공백 없이 실무 투입했습니다.</div>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">서비스 연속성 확보</span>
+            <span class="c-metric-lab">SOP · 온보딩 체계 구축</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-card-sub" onclick="openModal('m4')">
+        <div class="c-sub-badge">Supporting Case</div>
+        <div class="c-title">VOC 데이터 분석 · 반복 인입 원인 구조화 및 운영 정책 수립</div>
+        <div class="c-desc">프로모션 오인 VOC 173건 전수 분류로 82%가 동일 원인임을 규명, 서비스 개선 제안과 운영 정책 수립을 병행해 월 106건 → 4건으로 감소시켰습니다.</div>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">96%</span>
+            <span class="c-metric-lab">반복 인입 감소</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="m1" onclick="closeModal(event,'m1')">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-tags">
+          <span class="c-tag">B2B 협력사 협상</span><span class="c-tag">정책 개편</span><span class="c-tag">약관 기반 협상</span>
+        </div>
+        <div class="modal-title">택배사 사고·보상 프로세스 개선 · 회수/사진 증빙 기준 재정렬로 배상 회수액 14배 개선</div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn('m1')">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Problem</div>
+        <div class="modal-section-text">
+          기존 사고 처리 구조는 사고 물품 회수 후 물류센터 입고가 확인되어야 접수가 가능했고, 사진 증빙도 송장 사진·겉박스 파손 사진·내품 사진 3종을 요구하는 방식이었습니다. 고객은 이미 파손으로 불편을 겪은 상태였고, 주말이 지난 뒤에는 송장이나 겉박스를 폐기했을 가능성도 있었습니다. 그럼에도 고객센터가 다시 사진 3종을 요청해야 해 고객 부담이 커지고, 사고 접수와 보상 처리도 지연되는 문제가 있었습니다.
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Action</div>
+        <div class="modal-section-text">
+          택배 표준약관 제9조·제18조를 근거로 사고 인지 시 택배사가 송하인에게 통보해야 하는 기준을 다시 확인했습니다. 이후 사고가 이미 택배사 시스템에 등록된 건이라면, 택배사가 사고 접수 과정에서 확보한 정보를 활용하도록 하고 고객에게 송장·겉박스·내품 사진 3종을 다시 요구하지 않는 방향으로 증빙 기준을 재정렬했습니다. 회수도 모든 건에 일괄 적용하지 않고, 실제 확인이 필요한 케이스에 한해 진행하는 구조로 조정했습니다. 이를 통해 고객에게 반복 증빙을 요청하는 부담을 줄이고, 택배사와 고객센터가 같은 사고 정보를 기준으로 처리할 수 있도록 했습니다.
+        </div>
+      </div>
+
+      <!-- BEFORE/AFTER EVIDENCE -->
+      <div class="modal-section">
+        <div class="modal-section-label">Evidence · 협의 전후 구조</div>
+        <div style="overflow-x:auto; margin-top:12px;">
+          <table style="width:100%; border-collapse:collapse; font-size:14px; color:var(--text-1);">
+            <thead>
+              <tr style="background:var(--charcoal); color:#fff;">
+                <th style="padding:10px 14px; text-align:left; font-weight:600; border-radius:6px 0 0 0; width:22%;">구분</th>
+                <th style="padding:10px 14px; text-align:left; font-weight:600; width:39%;">Before</th>
+                <th style="padding:10px 14px; text-align:left; font-weight:600; border-radius:0 6px 0 0; width:39%;">After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 14px; font-weight:600; background:var(--bg-soft);">사고 접수</td>
+                <td style="padding:10px 14px; color:var(--text-2);">물품 회수 → 입고 확인 후 접수</td>
+                <td style="padding:10px 14px; color:var(--text-2);">사고 등록 여부 확인 후 즉시 접수 가능</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 14px; font-weight:600; background:var(--bg-soft);">고객 처리</td>
+                <td style="padding:10px 14px; color:var(--text-2);">파손 상품 보관 및 추가 사진 제출 필요</td>
+                <td style="padding:10px 14px; color:var(--text-2);">필요 시에만 회수, 중복 사진 요청 최소화</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 14px; font-weight:600; background:var(--bg-soft);">증빙 기준</td>
+                <td style="padding:10px 14px; color:var(--text-2);">송장·겉박스·내품 사진 3종 요구</td>
+                <td style="padding:10px 14px; color:var(--text-2);">택배사 사고 등록 정보 활용, 부족한 증빙만 추가 확인</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 14px; font-weight:600; background:var(--bg-soft); border-radius:0 0 0 6px;">운영 효과</td>
+                <td style="padding:10px 14px; color:var(--text-2);">고객 재요청·처리 지연 반복</td>
+                <td style="padding:10px 14px; color:var(--text-2); border-radius:0 0 6px 0;">고객 부담 감소, 접수 리드타임 단축, 배상 회수 개선</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-result">
+        <div class="modal-result-num">14배</div>
+        <div class="modal-result-desc">월 배상 회수액 50만원 수준 → 744만원 수준으로 개선.<br>정산 가이드라인은 내부 운영 기준으로 정착해 월 단위 사고 대응에 활용됨.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m2" onclick="closeModal(event,'m2')">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-tags">
+          <span class="c-tag">성과 지표 구조화</span><span class="c-tag">데이터 분석</span><span class="c-tag">정산 기준 수립</span>
+        </div>
+        <div class="modal-title">3PL 전환 후 협력사 피해 현황 집계 · 성과 지표 구조화 및 정산 체계 수립</div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn('m2')">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Problem</div>
+        <div class="modal-section-text">
+          3PL 전환 이후 사고 확인·접수·배상까지의 후속 처리 구조가 작동하지 않아 <strong>반품 회수비·재배송비·CS 보상 비용이 미정산 상태로 누적</strong>되고 있었습니다. 포장 불량으로 인한 파손·오피킹·출고 누락도 반복되었고, 3PL과의 직접 커뮤니케이션 구조가 없어 문제가 더욱 지연됐습니다.
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Action</div>
+        <div class="modal-section-text">
+          계약서 기준으로 피해 유형을 <strong>파손·누락·지연·미출고</strong>로 분류하고, 보상 가능 항목과 귀책 기준을 정렬했습니다. 월별 피해 현황 집계 파일과 3PL에 전달할 통보서 구조를 직접 설계·구축했습니다. 수집 가능한 기준으로 1차 집계 후 CEO에 보고하고 물류비 차감 반영 방향으로 정산 구조를 확정했습니다. 이후 상품 온도대별 운송비 데이터를 추가 반영해 최종 정산 기준을 완성했습니다.
+        </div>
+      </div>
+      <div class="modal-result">
+        <div class="modal-result-num">정산 체계 수립</div>
+        <div class="modal-result-desc">계약서 기반 피해 유형 분류 → 월별 집계 구조화 → CEO 보고 → 물류비 차감 정산 기준 확정.<br>이전에는 수치화되지 않던 협력사 피해 비용이 월 단위로 추적·정산되는 구조로 전환.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m3" onclick="closeModal(event,'m3')">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-tags">
+          <span class="c-tag">운영 체계 구축</span><span class="c-tag">온보딩 설계</span>
+        </div>
+        <div class="modal-title">운영 체계 구축 · 미경험 인력 온보딩 설계 및 서비스 공백 없는 운영 유지</div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn('m3')">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Problem</div>
+        <div class="modal-section-text">
+          법인회생으로 CS 전담 인력이 대거 퇴사하고 타 부서 인력을 순환 배치해야 하는 상황이 발생했습니다. <strong>운영 기준·판단 로직·에스컬레이션 구조가 전무</strong>한 상태에서 CS 경험이 없는 인력이 즉시 고객 응대에 투입되어야 했습니다.
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Action</div>
+        <div class="modal-section-text">
+          응대 판단 기준, 이슈 유형별 처리 SOP, 예외 케이스 대응 로직, 에스컬레이션 기준을 <strong>모두 처음부터 직접 설계하고 문서화</strong>했습니다. CS 경험 없는 인력이 가이드만으로 실무 판단이 가능한 구조를 목표로 했고, 복합 문의·경계 케이스에 대한 처리 기준도 포함해 현장에서 혼선 없이 적용할 수 있도록 정비했습니다.
+        </div>
+      </div>
+      <div class="modal-result">
+        <div class="modal-result-num">운영 연속성 유지</div>
+        <div class="modal-result-desc">지원 인력이 순차 투입되는 상황에서도 동일 기준으로 응대할 수 있도록 처리 기준·검수 흐름을 정비했습니다. 조직 혼란 속에서도 고객 대응 공백 없이 운영 연속성을 유지했습니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m4" onclick="closeModal(event,'m4')">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-tags">
+          <span class="c-tag">데이터 분석</span><span class="c-tag">VOC</span><span class="c-tag">운영 정책 수립</span>
+        </div>
+        <div class="modal-title">VOC 데이터 분석 · 반복 인입 원인 구조화 및 운영 정책 수립</div>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn('m4')">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-label">Problem</div>
+        <div class="modal-section-text">
+          프로모션 오인 관련 고객 문의가 매월 100건 이상 반복 인입되었습니다. 문의마다 개별 처리하는 방식으로는 근본적인 해결이 불가능했고, <strong>구조적 원인이 무엇인지 데이터로 규명</strong>되지 않은 상태였습니다.
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-label">Action</div>
+        <div class="modal-section-text">
+          프로모션 오인 VOC <strong>173건을 전수 분류</strong>(인입 원인·발생 채널·고객 행동 시점·정책 인지 여부)했습니다. 분석 결과 <strong>82%가 동일한 구조적 원인</strong>(주문 전 프로모션 조건 확인 불가)에서 발생했고, 모바일 채널이 94.8%로 집중된 것을 확인했습니다. EC 리드와 협의해 서비스 개선을 제안하는 동시에 '초회 인입 예외 처리·재인입 정책 안내 종결' 운영 정책을 직접 수립했습니다.
+        </div>
+      </div>
+      <div class="modal-result">
+        <div class="modal-result-num">96% 감소</div>
+        <div class="modal-result-desc">월 106건 → 4건. 데이터 기반 원인 규명 → 서비스 개선 제안 + 운영 정책 수립 병행으로 구조적 해결.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- JD MATCH -->
+<section class="sec" id="jd">
+  <div class="wrap">
+    <p class="sec-eyebrow">JD Match</p>
+    <h2 class="sec-title">쿠팡이츠서비스 채용 요건과의 매칭</h2>
+    <div class="jd-grid">
+
+      <div class="jd-item">
+        <div class="jd-left">
+          <div class="jd-num">필수 01</div>
+          <div class="jd-req">물류·유통 유관 업종에서 2년 이상 영업기획 또는 운영관리 경험</div>
+          <div class="jd-keyword-row">
+            <span class="jd-kw">물류·유통</span><span class="jd-kw">운영관리</span><span class="jd-kw">B2B 협력사</span>
+          </div>
+        </div>
+        <div class="jd-right">
+          <div class="jd-match-label">My Experience</div>
+          <div class="jd-match-title">택배사·3PL 등 물류 협력사 운영 관리</div>
+          <div class="jd-match-points">
+            <div class="jd-match-point">유기농 식품 이커머스(초록마을) CS운영팀에서 택배사·물류 파트너 운영 관리 담당</div>
+            <div class="jd-match-point">택배사 파손 보상 정책 협상, 3PL 피해 집계·정산 기준 수립, 카카오골프예약 400여 제휴사 정책 관리 경험 포함</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jd-item">
+        <div class="jd-left">
+          <div class="jd-num">필수 02</div>
+          <div class="jd-req">성과 지표 관리 및 분석을 통한 서비스 품질 개선 경험</div>
+          <div class="jd-keyword-row">
+            <span class="jd-kw">성과 지표</span><span class="jd-kw">분석</span><span class="jd-kw">서비스 품질</span>
+          </div>
+        </div>
+        <div class="jd-right">
+          <div class="jd-match-label">My Experience</div>
+          <div class="jd-match-title">협력사 피해 현황 집계 구조화 및 VOC 전수 분석</div>
+          <div class="jd-match-points">
+            <div class="jd-match-point">3PL 피해 현황을 유형별로 분류·집계하고 월별 성과 지표로 구조화해 CEO 보고 및 정산 기준 확정</div>
+            <div class="jd-match-point">VOC 173건 전수 분류로 82% 동일 원인 규명 → 서비스 개선 제안 + 운영 정책 수립 병행 → 96% 감소</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="jd-item">
+        <div class="jd-left">
+          <div class="jd-num">우대</div>
+          <div class="jd-req">데이터 분석을 활용해 비즈니스 문제를 구조화하고 해결한 경험</div>
+          <div class="jd-keyword-row">
+            <span class="jd-kw">데이터 분석</span><span class="jd-kw">문제 구조화</span><span class="jd-kw">실행</span>
+          </div>
+        </div>
+        <div class="jd-right">
+          <div class="jd-match-label">My Experience</div>
+          <div class="jd-match-title">데이터 기반 협력사 문제 정의 및 실행까지 연결</div>
+          <div class="jd-match-points">
+            <div class="jd-match-point">협력사 문제를 감(感)이 아닌 데이터로 정의 — 피해 유형별 분류, 월별 수치화, 원인 규명의 흐름으로 접근</div>
+            <div class="jd-match-point">분석 결과를 리포팅으로 끝내지 않고, 협상 논리·정산 기준·운영 정책 수립까지 직접 실행에 연결</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- SKILLS -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <p class="sec-eyebrow">Skills</p>
+    <h2 class="sec-title">보유 역량</h2>
+    <div class="skills-grid">
+      <div class="sk-group fi">
+        <div class="sk-title">협력사 관계 관리</div>
+        <div class="sk-list">
+          <div class="sk-item">B2B 파트너 정책 협상</div>
+          <div class="sk-item">약관·계약서 기반 귀책 기준 정의</div>
+          <div class="sk-item">파트너 커뮤니케이션 구조 설계</div>
+          <div class="sk-item">정산 가이드라인 명문화</div>
+        </div>
+      </div>
+      <div class="sk-group fi">
+        <div class="sk-title">운영 관리 · 분석</div>
+        <div class="sk-list">
+          <div class="sk-item">성과 지표 구조화 및 월별 리포팅</div>
+          <div class="sk-item">VOC 전수 분류 및 원인 분석</div>
+          <div class="sk-item">피해 유형별 데이터 집계</div>
+          <div class="sk-item">Excel 고급 기능 · Google Sheets</div>
+        </div>
+      </div>
+      <div class="sk-group fi">
+        <div class="sk-title">운영 체계 설계</div>
+        <div class="sk-list">
+          <div class="sk-item">SOP · 응대 판단 기준 설계</div>
+          <div class="sk-item">에스컬레이션 구조 정의</div>
+          <div class="sk-item">온보딩 가이드 제작</div>
+          <div class="sk-item">Chrome Extension · AI 자동화</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-name">오희은</div>
+        <div class="footer-sub">쿠팡이츠서비스 배달 협력사 운영 관리 담당자 지원</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-end;">
+        <a href="mailto:gldms1009@naver.com" class="btn btn-outline" style="font-size:13px; padding:10px 20px;">
+          gldms1009@naver.com
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <span style="font-size:13px; color:var(--text-3);">010-2357-2674</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hd = document.getElementById('hd');
+  window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 10); });
+
+  const navToggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    nav.classList.toggle('open');
+  });
+
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(e, id) {
+    if (e.target === document.getElementById(id)) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  function closeModalBtn(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
