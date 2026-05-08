@@ -12,7 +12,7 @@
     :root {
       --white: #FFFFFF; --bg-soft: #F7F7F8; --bg-card: #F3F3F4;
       --border: #E5E5E6; --border-hover: #282D32;
-      --text-1: #141416; --text-2: #50505A; --text-3: #909098;
+      --text-1: #141416; --text-2: #50505A; --text-3: #909098;h
       --charcoal: #282D32; --charcoal-2: #1A1E21; --charcoal-a: rgba(40,45,50,0.07);
       --sh-sm: 0 1px 4px rgba(0,0,0,0.06); --sh-md: 0 4px 20px rgba(0,0,0,0.09); --sh-lg: 0 12px 40px rgba(0,0,0,0.12);
       --r: 10px; --r-sm: 6px; --ease: cubic-bezier(.4,0,.2,1); --t: 0.22s;
@@ -735,7 +735,7 @@
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-  }, { threshold: 0.12 });
+  }, { threshold: 0 });
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
 </body>
